@@ -1,8 +1,8 @@
-<div class="task">
+<div class="task" #taskRef>
   <p class="task__title">{{ task.title }}</p>
 
   <div class="task__button">
-    <button class="button button__done">Сделано</button>
+    <button class="button button__done" (click)="done()">Сделано</button>
     <button class="button button__edit">Редактировать</button>
     <button class="button button__delete">Удалить</button>
   </div>

@@ -13,7 +13,19 @@ export class HomeComponent implements OnInit {
   constructor(private tasksService: TasksService) { }
 
   ngOnInit(): void {
+    this.getTasks()
+  }
+
+  private getTasks(): void {
     this.tasks = this.tasksService.tasks
+  }
+
+  public done(id: number): void {
+    setTimeout(() => {
+      this.tasksService.done(id)
+      this.getTasks()
+    }, 2000)
+
   }
 
 }

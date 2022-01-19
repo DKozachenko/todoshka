@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
 import {TaskInterface} from "../../interfaces/task.interface";
 
 @Component({
@@ -15,9 +15,20 @@ export class TaskComponent implements OnInit {
     labelsId: null
   }
 
-  constructor() { }
+  @Output() onDone: EventEmitter<number> = new EventEmitter<number>()
+
+  @ViewChild('taskRef') taskRef = new ElementRef('taskRef')
+
+  constructor(private renderer: Renderer2) { }
 
   ngOnInit(): void {
+  }
+
+  public done(): void {
+    const el = this.taskRef.nativeElement
+    this.renderer.setStyle(el, 'opacity', '.3')
+    this.renderer.setAttribute(el, 'disabled', 'true')
+    this.onDone.emit(this.task.id)
   }
 
 }
