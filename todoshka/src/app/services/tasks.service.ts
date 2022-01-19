@@ -79,7 +79,6 @@ export class TasksService {
 
     this.archiveTasks.push(archiveTask ?? tempTask)
 
-    console.log(this.tasks, this.archiveTasks)
   }
 
 }
