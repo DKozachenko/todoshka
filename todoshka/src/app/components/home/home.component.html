@@ -12,6 +12,7 @@
     <app-task *ngFor="let task of tasks"
               [task]="task"
               (onDone)="done($event)"
+              (onEdit)="edit()"
     ></app-task>
   </div>
 </div>

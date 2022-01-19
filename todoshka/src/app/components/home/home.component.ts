@@ -8,6 +8,8 @@ import {TaskInterface} from "../../interfaces/task.interface";
   styleUrls: ['./home.component.sass']
 })
 export class HomeComponent implements OnInit {
+  private delay: number = 1500
+
   public tasks: TaskInterface[] = []
   public isMessage: boolean = false
   public messageText: string = ''
@@ -32,8 +34,18 @@ export class HomeComponent implements OnInit {
       this.tasksService.done(id)
       this.isMessage = false
       this.getTasks()
-    }, 1500)
-
+    }, this.delay)
   }
+
+  public edit(): void {
+    this.isMessage = true
+    this.messageText = 'Дело изменено'
+    this.messageClass = 'message__edit'
+
+    setTimeout(() => {
+      this.isMessage = false
+    }, this.delay)
+  }
+
 
 }
