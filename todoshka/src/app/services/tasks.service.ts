@@ -50,13 +50,33 @@ export class TasksService {
 
   public done(id: number): void {
     this.tasks = this.tasks.filter((task: TaskInterface) => {
-      if (task.id === id) {
-        this.archiveTasks.push(task)
-        return
-      } else {
-        return task
-      }
+      return task.id !== id
     })
+
+    console.log(this.tasks, this.archiveTasks)
+  }
+
+  public archive(id: number): void {
+
+    const tempTask: TaskInterface = {
+      id: 0,
+      title: '',
+      description: null,
+      listId: null,
+      labelId: null,
+    }
+
+    const archiveTask = this.tasks.find((task: TaskInterface) => {
+      return task.id === id
+    })
+
+    this.tasks = this.tasks.filter((task: TaskInterface) => {
+      return task.id !== id
+    })
+
+    this.archiveTasks.push(archiveTask ?? tempTask)
+
+    console.log(this.tasks, this.archiveTasks)
   }
 
 }
