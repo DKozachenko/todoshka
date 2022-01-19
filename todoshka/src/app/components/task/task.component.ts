@@ -39,6 +39,8 @@ export class TaskComponent implements OnInit {
 
   public edit(): void {
     this.isTaskParameters = !this.isTaskParameters
+
+
     if (!this.isTaskParameters) {
       this.onEdit.emit()
     }
@@ -46,6 +48,9 @@ export class TaskComponent implements OnInit {
   }
 
   public archive(): void {
+    const el = this.taskRef.nativeElement
+    this.renderer.setStyle(el, 'opacity', '.3')
+    this.renderer.setAttribute(el, 'disabled', 'true')
     this.onArchive.emit(this.task.id)
   }
 }

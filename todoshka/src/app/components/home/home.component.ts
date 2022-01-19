@@ -47,5 +47,17 @@ export class HomeComponent implements OnInit {
     }, this.delay)
   }
 
+  public archive(id: number): void {
+    this.isMessage = true
+    this.messageText = 'Дело архивировано'
+    this.messageClass = 'message__archive'
+
+    setTimeout(() => {
+      this.tasksService.archive(id)
+      this.isMessage = false
+      this.getTasks()
+    }, this.delay)
+  }
+
 
 }
