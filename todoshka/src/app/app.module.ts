@@ -12,6 +12,7 @@ import { MessageComponent } from './components/message/message.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormsModule} from "@angular/forms";
 import { ArchiveTaskComponent } from './components/archive-task/archive-task.component';
+import { AddButtonComponent } from './components/add-button/add-button.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ArchiveTaskComponent } from './components/archive-task/archive-task.com
     TaskComponent,
     MessageComponent,
     ArchiveTaskComponent,
+    AddButtonComponent,
   ],
   imports: [
     BrowserModule,
