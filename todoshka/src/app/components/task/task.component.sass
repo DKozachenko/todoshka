@@ -1,20 +1,36 @@
 .task
   width: 65rem
 
-  padding: 1.8rem 2rem
-
-  border: 2px solid black
-
-  display: flex
-  justify-content: space-between
-  align-items: center
-
   margin-bottom: 2rem
 
-  &__title
-    font-size: 1.8rem
-    line-height: 1
-    font-weight: 400
-    color: black
+  &__preview
+    padding: 1.8rem 2rem
 
-    margin-right: 2rem
+    border: 2px solid black
+
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+    &-title
+      font-size: 1.8rem
+      line-height: 1
+      font-weight: 400
+      color: black
+
+      margin-right: 2rem
+
+  &__parameters
+    display: flex
+    justify-content: space-between
+    padding: 1rem 1.5rem
+
+    border-left: 2px solid black
+    border-right: 2px solid black
+    border-bottom: 2px solid black
+
+    &-left
+      flex-basis: 60%
+
+    &-right
+      flex-basis: 35%

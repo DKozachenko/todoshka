@@ -21,7 +21,7 @@ export class MessageComponent implements OnInit, AfterViewChecked {
 
   ngAfterViewChecked() {
     const el = this.messageRef.nativeElement
-    this.renderer.addClass(el, 'message__done')
+    this.renderer.addClass(el, this.messageClass)
   }
 
 }

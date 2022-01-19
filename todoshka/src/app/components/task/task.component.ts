@@ -1,5 +1,6 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
 import {TaskInterface} from "../../interfaces/task.interface";
+import {TasksService} from "../../services/tasks.service";
 
 @Component({
   selector: 'app-task',
@@ -12,10 +13,15 @@ export class TaskComponent implements OnInit {
     title: '',
     description: null,
     listId: null,
-    labelsId: null
+    labelId: null
   }
 
+  public isTaskParameters: boolean = false
+
+
   @Output() onDone: EventEmitter<number> = new EventEmitter<number>()
+  @Output() onEdit: EventEmitter<void> = new EventEmitter<void>()
+  @Output() onArchive: EventEmitter<number> = new EventEmitter<number>()
 
   @ViewChild('taskRef') taskRef = new ElementRef('taskRef')
 
@@ -31,4 +37,15 @@ export class TaskComponent implements OnInit {
     this.onDone.emit(this.task.id)
   }
 
+  public edit(): void {
+    this.isTaskParameters = !this.isTaskParameters
+    if (!this.isTaskParameters) {
+      this.onEdit.emit()
+    }
+
+  }
+
+  public archive(): void {
+    this.onArchive.emit(this.task.id)
+  }
 }

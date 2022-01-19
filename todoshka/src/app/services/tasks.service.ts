@@ -12,35 +12,35 @@ export class TasksService {
       title: 'Купить хлеб',
       description: null,
       listId: null,
-      labelsId: null
+      labelId: null
     },
     {
       id: 2,
       title: 'Купить молоко',
       description: null,
       listId: null,
-      labelsId: null
+      labelId: null
     },
     {
       id: 3,
       title: 'Постирать',
       description: null,
       listId: null,
-      labelsId: null
+      labelId: null
     },
     {
       id: 4,
       title: 'Перебрать документы',
       description: null,
       listId: null,
-      labelsId: null
+      labelId: null
     },
     {
       id: 5,
       title: 'Погулять с собакой',
       description: null,
       listId: null,
-      labelsId: null
+      labelId: null
     }
   ]
 
