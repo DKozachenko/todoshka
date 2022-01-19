@@ -25,10 +25,14 @@ export class HomeComponent implements OnInit {
     this.tasks = this.tasksService.tasks
   }
 
-  public done(id: number): void {
+  private processMessage(mesText: string, mesClass: string): void {
     this.isMessage = true
-    this.messageText = 'Дело сделано'
-    this.messageClass = 'message__done'
+    this.messageText = `Дело ${mesText}`
+    this.messageClass = `message__${mesClass}`
+  }
+
+  public done(id: number): void {
+    this.processMessage('сделано', 'done')
 
     setTimeout(() => {
       this.tasksService.done(id)
@@ -38,9 +42,7 @@ export class HomeComponent implements OnInit {
   }
 
   public edit(): void {
-    this.isMessage = true
-    this.messageText = 'Дело изменено'
-    this.messageClass = 'message__edit'
+    this.processMessage('изменено', 'edit')
 
     setTimeout(() => {
       this.isMessage = false
@@ -48,9 +50,7 @@ export class HomeComponent implements OnInit {
   }
 
   public archive(id: number): void {
-    this.isMessage = true
-    this.messageText = 'Дело архивировано'
-    this.messageClass = 'message__archive'
+    this.processMessage('архивировано', 'archive')
 
     setTimeout(() => {
       this.tasksService.archive(id)
