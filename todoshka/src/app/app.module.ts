@@ -7,6 +7,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ListsComponent } from './components/lists/lists.component';
 import { LabelsComponent } from './components/labels/labels.component';
 import { ArchiveComponent } from './components/archive/archive.component';
+import { TaskComponent } from './components/task/task.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { ArchiveComponent } from './components/archive/archive.component';
     HomeComponent,
     ListsComponent,
     LabelsComponent,
-    ArchiveComponent
+    ArchiveComponent,
+    TaskComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

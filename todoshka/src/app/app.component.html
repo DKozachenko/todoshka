@@ -1,20 +1,32 @@
-<p>App component</p>
+<main>
+  <aside class="sidebar">
+    <h2 class="title sidebar__title">Todoshka</h2>
 
-<aside class="sidebar">
-  <ul>
-    <li>
-      <a routerLink="/">Home</a>
-    </li>
-    <li>
-      <a routerLink="/lists">Lists</a>
-    </li>
-    <li>
-      <a routerLink="/labels">Labels</a>
-    </li>
-    <li>
-      <a routerLink="/archive">Archive</a>
-    </li>
-  </ul>
-</aside>
+    <nav class="sidebar__nav">
+      <a class="sidebar__nav-link link-active"
+         routerLink="/"
+         routerLinkActive="link-active"
+         [routerLinkActiveOptions]="{ exact: true }"
+      >Главная</a>
 
-<router-outlet></router-outlet>
+      <a class="sidebar__nav-link"
+         routerLink="/lists"
+         routerLinkActive="link-active"
+      >Списки</a>
+
+      <a class="sidebar__nav-link"
+         routerLink="/labels"
+         routerLinkActive="link-active"
+      >Метки</a>
+
+      <a class="sidebar__nav-link"
+         routerLink="/archive"
+         routerLinkActive="link-active"
+      >Архив</a>
+    </nav>
+  </aside>
+
+  <router-outlet></router-outlet>
+
+</main>
+
