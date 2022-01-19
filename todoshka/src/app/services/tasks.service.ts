@@ -49,14 +49,16 @@ export class TasksService {
   constructor() { }
 
   public done(id: number): void {
-    console.log(this.tasks)
     this.tasks = this.tasks.filter((task: TaskInterface) => {
       return task.id !== id
     })
-
-    console.log(this.tasks, this.archiveTasks)
   }
 
+  public delete(id: number): void {
+    this.archiveTasks = this.archiveTasks.filter((task: TaskInterface) => {
+      return task.id !== id
+    })
+  }
   public archive(id: number): void {
 
     const tempTask: TaskInterface = {

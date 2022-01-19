@@ -8,6 +8,7 @@ import {TasksService} from "../../services/tasks.service";
   styleUrls: ['./archive.component.sass']
 })
 export class ArchiveComponent implements OnInit {
+  private delay: number = 1500
   public archiveTasks: TaskInterface[] = []
 
   public isMessage: boolean = false
@@ -22,6 +23,22 @@ export class ArchiveComponent implements OnInit {
 
   private getTasks(): void {
     this.archiveTasks = this.tasksService.archiveTasks
+  }
+
+  private processMessage(mesText: string, mesClass: string): void {
+    this.isMessage = true
+    this.messageText = `Дело ${mesText}`
+    this.messageClass = `message__${mesClass}`
+  }
+
+  public delete(id: number) {
+    this.processMessage('удалено', 'delete')
+
+    setTimeout(() => {
+      this.tasksService.delete(id)
+      this.isMessage = false
+      this.getTasks()
+    }, this.delay)
   }
 
 }

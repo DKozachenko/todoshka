@@ -11,6 +11,7 @@
 
   <app-archive-task *ngFor="let task of archiveTasks"
                [task]="task"
+                    (onDelete)="delete($event)"
   ></app-archive-task>
   </div>
 </div>

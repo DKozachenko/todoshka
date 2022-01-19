@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
 import {TaskInterface} from "../../interfaces/task.interface";
 
 @Component({
@@ -15,13 +15,24 @@ export class ArchiveTaskComponent implements OnInit {
     labelId: null
   }
 
-  constructor() { }
+  @Output() onDelete: EventEmitter<number> = new EventEmitter<number>()
+
+  @ViewChild('taskRef') taskRef = new ElementRef('taskRef')
+
+  constructor(private renderer: Renderer2) { }
 
   ngOnInit(): void {
   }
 
-  public delete(id: number): void {
+  private processTaskStyle(): void {
+    const el = this.taskRef.nativeElement
+    this.renderer.setStyle(el, 'opacity', '.3')
+    this.renderer.setAttribute(el, 'disabled', 'true')
+  }
 
+  public delete(id: number): void {
+    this.processTaskStyle()
+    this.onDelete.emit(this.task.id)
   }
 
 }
