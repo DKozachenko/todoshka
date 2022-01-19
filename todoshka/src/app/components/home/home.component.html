@@ -4,6 +4,11 @@
   </h1>
 
   <div class="content__main">
+    <app-message *ngIf="isMessage"
+      [messageText]="messageText"
+      [messageClass]="messageClass"
+    ></app-message>
+
     <app-task *ngFor="let task of tasks"
               [task]="task"
               (onDone)="done($event)"
