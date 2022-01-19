@@ -8,7 +8,8 @@ import { ListsComponent } from './components/lists/lists.component';
 import { LabelsComponent } from './components/labels/labels.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { TaskComponent } from './components/task/task.component';
-import { MessageComponent } from './message/message.component';
+import { MessageComponent } from './components/message/message.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -18,11 +19,12 @@ import { MessageComponent } from './message/message.component';
     LabelsComponent,
     ArchiveComponent,
     TaskComponent,
-    MessageComponent
+    MessageComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
