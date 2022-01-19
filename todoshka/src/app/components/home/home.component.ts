@@ -59,5 +59,10 @@ export class HomeComponent implements OnInit {
     }, this.delay)
   }
 
+  public add(): void {
+    this.tasksService.add()
+    this.getTasks()
+  }
+
 
 }

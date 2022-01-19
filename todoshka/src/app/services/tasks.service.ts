@@ -60,7 +60,6 @@ export class TasksService {
     })
   }
   public archive(id: number): void {
-
     const tempTask: TaskInterface = {
       id: 0,
       title: '',
@@ -78,7 +77,17 @@ export class TasksService {
     })
 
     this.archiveTasks.push(archiveTask ?? tempTask)
+  }
 
+  public add(): void {
+    const len = this.tasks.length + 1
+    this.tasks.push({
+      id: len,
+      title: 'Random title',
+      description: null,
+      listId: null,
+      labelId: null
+    })
   }
 
 }
