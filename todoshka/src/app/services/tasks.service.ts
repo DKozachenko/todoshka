@@ -49,6 +49,7 @@ export class TasksService {
   constructor() { }
 
   public done(id: number): void {
+    console.log(this.tasks)
     this.tasks = this.tasks.filter((task: TaskInterface) => {
       return task.id !== id
     })

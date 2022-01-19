@@ -2,4 +2,15 @@
   <h1 class="title content__title">
     Архив
   </h1>
+
+  <div class="content__main">
+    <app-message *ngIf="isMessage"
+                 [messageText]="messageText"
+                 [messageClass]="messageClass"
+    ></app-message>
+
+  <app-archive-task *ngFor="let task of archiveTasks"
+               [task]="task"
+  ></app-archive-task>
+  </div>
 </div>

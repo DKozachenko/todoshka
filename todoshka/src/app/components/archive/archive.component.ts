@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {TaskInterface} from "../../interfaces/task.interface";
+import {TasksService} from "../../services/tasks.service";
 
 @Component({
   selector: 'app-archive',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./archive.component.sass']
 })
 export class ArchiveComponent implements OnInit {
+  public archiveTasks: TaskInterface[] = []
 
-  constructor() { }
+  public isMessage: boolean = false
+  public messageText: string = ''
+  public messageClass: string = ''
+
+  constructor(private tasksService: TasksService) { }
 
   ngOnInit(): void {
+    this.getTasks()
+  }
+
+  private getTasks(): void {
+    this.archiveTasks = this.tasksService.archiveTasks
   }
 
 }
