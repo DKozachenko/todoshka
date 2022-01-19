@@ -8,6 +8,8 @@ import {TasksService} from "../../services/tasks.service";
   styleUrls: ['./task.component.sass']
 })
 export class TaskComponent implements OnInit {
+  public isTaskParameters: boolean = false
+
   @Input() public task: TaskInterface = {
     id: 0,
     title: '',
@@ -15,9 +17,6 @@ export class TaskComponent implements OnInit {
     listId: null,
     labelId: null
   }
-
-  public isTaskParameters: boolean = false
-
 
   @Output() onDone: EventEmitter<number> = new EventEmitter<number>()
   @Output() onEdit: EventEmitter<void> = new EventEmitter<void>()
@@ -30,27 +29,27 @@ export class TaskComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public done(): void {
+  private processTaskStyle(): void {
     const el = this.taskRef.nativeElement
     this.renderer.setStyle(el, 'opacity', '.3')
     this.renderer.setAttribute(el, 'disabled', 'true')
+  }
+
+  public done(): void {
+    this.processTaskStyle()
     this.onDone.emit(this.task.id)
   }
 
   public edit(): void {
     this.isTaskParameters = !this.isTaskParameters
 
-
     if (!this.isTaskParameters) {
       this.onEdit.emit()
     }
-
   }
 
   public archive(): void {
-    const el = this.taskRef.nativeElement
-    this.renderer.setStyle(el, 'opacity', '.3')
-    this.renderer.setAttribute(el, 'disabled', 'true')
+    this.processTaskStyle()
     this.onArchive.emit(this.task.id)
   }
 }

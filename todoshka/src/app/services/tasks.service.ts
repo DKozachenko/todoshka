@@ -52,10 +52,13 @@ export class TasksService {
     this.tasks = this.tasks.filter((task: TaskInterface) => {
       return task.id !== id
     })
-
-    console.log(this.tasks, this.archiveTasks)
   }
 
+  public delete(id: number): void {
+    this.archiveTasks = this.archiveTasks.filter((task: TaskInterface) => {
+      return task.id !== id
+    })
+  }
   public archive(id: number): void {
 
     const tempTask: TaskInterface = {
@@ -76,7 +79,6 @@ export class TasksService {
 
     this.archiveTasks.push(archiveTask ?? tempTask)
 
-    console.log(this.tasks, this.archiveTasks)
   }
 
 }
