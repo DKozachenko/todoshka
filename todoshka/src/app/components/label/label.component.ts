@@ -6,7 +6,7 @@ import {
   OnInit,
   Output,
   Renderer2,
-  ViewChild, ViewContainerRef,
+  ViewChild,
 } from '@angular/core';
 import {LabelInterface} from "../../interfaces/label.interface";
 
@@ -18,6 +18,7 @@ import {LabelInterface} from "../../interfaces/label.interface";
 export class LabelComponent implements OnInit {
   public isLabelParameters: boolean = false
   public isLabelPreview: boolean = false
+  public labelPreviewTitle: string = ''
 
   @Input() public label: LabelInterface = {
     id: 0,
@@ -29,6 +30,7 @@ export class LabelComponent implements OnInit {
   @Output() onDelete: EventEmitter<number> = new EventEmitter<number>()
 
   @ViewChild('labelRef') labelRef = new ElementRef('labelRef')
+  @ViewChild('inputTitle') inputTitle = new ElementRef<any>('inputTitle')
 
 
   constructor(private renderer: Renderer2) { }
@@ -51,13 +53,25 @@ export class LabelComponent implements OnInit {
     this.label.title = str
 
     this.isLabelPreview = true
+  }
 
+  public setPreviewTitle(str: string): void {
+    if (str.length > 3) {
+      str = str.substring(0, 3)
+    }
+    str = str.toUpperCase()
+
+    this.labelPreviewTitle = str
+    this.isLabelPreview = true
   }
 
   public edit(): void {
     this.isLabelParameters = !this.isLabelParameters
 
     if (!this.isLabelParameters) {
+      const title: string = this.inputTitle.nativeElement.value
+      this.setTitle(title)
+
       this.onEdit.emit()
     }
   }

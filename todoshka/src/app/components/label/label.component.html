@@ -16,7 +16,7 @@
         <input type="text"
                placeholder="Название"
                #inputTitle
-               (blur)="setTitle(inputTitle.value)"
+               (blur)="setPreviewTitle(inputTitle.value)"
                [value]="this.label.title"
         >
       </div>
@@ -39,7 +39,7 @@
                *ngIf="isLabelPreview"
                [style.background-color]="label.color"
           >
-            {{ label.title }}
+            {{ labelPreviewTitle }}
           </div>
         </div>
       </div>

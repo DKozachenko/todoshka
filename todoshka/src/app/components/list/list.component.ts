@@ -18,6 +18,7 @@ export class ListComponent implements OnInit {
   @Output() onEdit: EventEmitter<void> = new EventEmitter<void>()
 
   @ViewChild('listRef') listRef = new ElementRef('listRef')
+  @ViewChild('inputTitle') inputTitle = new ElementRef<any>('inputTitle')
 
   constructor(private renderer: Renderer2) { }
 
@@ -34,6 +35,9 @@ export class ListComponent implements OnInit {
     this.isListParameters = !this.isListParameters
 
     if (!this.isListParameters) {
+      const title: string = this.inputTitle.nativeElement.value
+      this.list.title = title
+
       this.onEdit.emit()
     }
   }
