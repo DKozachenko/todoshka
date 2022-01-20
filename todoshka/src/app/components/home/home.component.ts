@@ -21,6 +21,10 @@ export class HomeComponent implements OnInit {
   public messageText: string = ''
   public messageClass: string = ''
 
+  public isFilters: boolean = false
+  public queryFilter: string = ''
+  public keyFilter: string = 'title'
+
   constructor(private tasksService: TasksService,
               private listsService: ListsService,
               private labelsService: LabelsService) { }
@@ -80,6 +84,18 @@ export class HomeComponent implements OnInit {
   public add(): void {
     this.tasksService.add()
     this.getTasks()
+  }
+
+  public parseKeyFilter(): string {
+    if (this.keyFilter === 'title') {
+      return 'названию'
+    } else if (this.keyFilter === 'labelId') {
+      return 'метке'
+    } else if (this.keyFilter === 'listId') {
+      return 'списку'
+    } else {
+      return ''
+    }
   }
 
 
