@@ -36,7 +36,7 @@ export class ListsService {
     const len = this.lists.length + 1
     this.lists.push({
       id: len,
-      title: 'Random title'
+      title: 'Название'
     })
   }
 }

@@ -31,12 +31,18 @@ export class ArchiveComponent implements OnInit {
     this.messageClass = `message__${mesClass}`
   }
 
+  private setClickabilityWindow(str: string): void {
+    window.document.documentElement.style.pointerEvents = str
+  }
+
   public delete(id: number) {
     this.processMessage('удалено', 'delete')
+    this.setClickabilityWindow('none')
 
     setTimeout(() => {
       this.tasksService.delete(id)
       this.isMessage = false
+      this.setClickabilityWindow('auto')
       this.getTasks()
     }, this.delay)
   }

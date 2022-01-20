@@ -33,6 +33,10 @@ export class LabelsComponent implements OnInit {
     this.messageClass = `message__${mesClass}`
   }
 
+  private setClickabilityWindow(str: string): void {
+    window.document.documentElement.style.pointerEvents = str
+  }
+
   public edit(): void {
     this.processMessage('изменена', 'edit')
 
@@ -42,12 +46,13 @@ export class LabelsComponent implements OnInit {
   }
 
   public delete(id: number): void {
-    console.log(1)
     this.processMessage('удалена', 'delete')
+    this.setClickabilityWindow('none')
 
     setTimeout(() => {
       this.labelsService.delete(id)
       this.isMessage = false
+      this.setClickabilityWindow('auto')
       this.getLabels()
     }, this.delay)
   }

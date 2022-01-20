@@ -35,7 +35,7 @@ export class LabelsService {
     const len = this.labels.length + 1
     this.labels.push({
       id: len,
-      title: 'RND',
+      title: 'ХХХ',
       color: null
     })
   }

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TasksService} from "../../services/tasks.service";
 import {TaskInterface} from "../../interfaces/task.interface";
 import {ListsService} from "../../services/lists.service";
@@ -53,12 +53,18 @@ export class HomeComponent implements OnInit {
     this.messageClass = `message__${mesClass}`
   }
 
+  private setClickabilityWindow(str: string): void {
+    window.document.documentElement.style.pointerEvents = str
+  }
+
   public done(id: number): void {
     this.processMessage('сделано', 'done')
+    this.setClickabilityWindow('none')
 
     setTimeout(() => {
       this.tasksService.done(id)
       this.isMessage = false
+      this.setClickabilityWindow('auto')
       this.getTasks()
     }, this.delay)
   }
@@ -73,10 +79,12 @@ export class HomeComponent implements OnInit {
 
   public archive(id: number): void {
     this.processMessage('архивировано', 'archive')
+    this.setClickabilityWindow('none')
 
     setTimeout(() => {
       this.tasksService.archive(id)
       this.isMessage = false
+      this.setClickabilityWindow('auto')
       this.getTasks()
     }, this.delay)
   }
