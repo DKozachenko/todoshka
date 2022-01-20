@@ -1,6 +1,13 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
-import {TaskInterface} from "../../interfaces/task.interface";
-import {ListInterface} from "../../interfaces/list.interface";
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  Renderer2,
+  ViewChild, ViewContainerRef,
+} from '@angular/core';
 import {LabelInterface} from "../../interfaces/label.interface";
 
 @Component({
@@ -10,6 +17,7 @@ import {LabelInterface} from "../../interfaces/label.interface";
 })
 export class LabelComponent implements OnInit {
   public isLabelParameters: boolean = false
+  public isLabelPreview: boolean = false
 
   @Input() public label: LabelInterface = {
     id: 0,
@@ -22,6 +30,7 @@ export class LabelComponent implements OnInit {
 
   @ViewChild('labelRef') labelRef = new ElementRef('labelRef')
 
+
   constructor(private renderer: Renderer2) { }
 
   ngOnInit(): void {
@@ -29,8 +38,20 @@ export class LabelComponent implements OnInit {
 
   private processTaskStyle(): void {
     const el = this.labelRef.nativeElement
+    console.log(typeof el)
     this.renderer.setStyle(el, 'opacity', '.3')
     this.renderer.setAttribute(el, 'disabled', 'true')
+  }
+
+  public setTitle(str: string): void {
+    if (str.length > 3) {
+      str = str.substring(0, 3)
+    }
+    str = str.toUpperCase()
+    this.label.title = str
+
+    this.isLabelPreview = true
+
   }
 
   public edit(): void {

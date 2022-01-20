@@ -16,7 +16,7 @@
         <input type="text"
                placeholder="Название"
                #inputTitle
-               (blur)="label.title = inputTitle.value"
+               (blur)="setTitle(inputTitle.value)"
                [value]="this.label.title"
         >
       </div>
@@ -24,7 +24,8 @@
       <div class="input__block">
         <p>Цвет</p>
         <input placeholder="Цвет"
-                  [(ngModel)]="label.color"
+               (blur)="isLabelPreview = true"
+               [(ngModel)]="label.color"
         >
       </div>
     </div>
@@ -33,6 +34,14 @@
       <div class="input__block">
         <p>Превью</p>
 
+        <div class="label__wrap">
+          <div class="label__wrap-preview"
+               *ngIf="isLabelPreview"
+               [style.background-color]="label.color"
+          >
+            {{ label.title }}
+          </div>
+        </div>
       </div>
     </div>
   </div>
