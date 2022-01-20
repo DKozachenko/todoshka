@@ -17,6 +17,10 @@ export class ListsService {
     {
       id: 3,
       title: 'Улица'
+    },
+    {
+      id: 4,
+      title: 'Работа'
     }
   ]
 

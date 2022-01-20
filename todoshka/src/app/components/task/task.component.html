@@ -34,9 +34,10 @@
       <div class="input__block">
         <p>Список</p>
         <select [(ngModel)]="task.listId">
-          <option value="Дом">Дом</option>
-          <option value="Улица">Улица</option>
-          <option value="Работа">Работа</option>
+          <option *ngFor="let list of lists"
+                  [value]="list.title"
+          >
+            {{ list.title }}</option>
         </select>
       </div>
 
