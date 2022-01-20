@@ -15,6 +15,7 @@ import { ArchiveTaskComponent } from './components/archive-task/archive-task.com
 import { AddButtonComponent } from './components/add-button/add-button.component';
 import { ListComponent } from './components/list/list.component';
 import { LabelComponent } from './components/label/label.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { LabelComponent } from './components/label/label.component';
     AddButtonComponent,
     ListComponent,
     LabelComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

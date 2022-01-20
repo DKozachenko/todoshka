@@ -9,7 +9,33 @@
       [messageClass]="messageClass"
     ></app-message>
 
-    <app-task *ngFor="let task of tasks"
+    <button class="button button__filter"
+            (click)="isFilters = !isFilters"
+    >Показать фильтры</button>
+
+    <div class="filters" *ngIf="isFilters">
+      <div class="filters__buttons">
+        <button class="button button__filter"
+          (click)="keyFilter = 'title'"
+        >Название</button>
+        <button class="button button__filter"
+          (click)="keyFilter = 'listId'"
+        >Список</button>
+        <button class="button button__filter"
+          (click)="keyFilter = 'labelId'"
+        >Метка</button>
+      </div>
+
+      <div class="filters__block">
+        <input type="text" [(ngModel)]="queryFilter">
+
+        <p> Сейчас фильтр идет по {{ parseKeyFilter() }}</p>
+      </div>
+
+    </div>
+
+
+    <app-task *ngFor="let task of tasks | filter:queryFilter:keyFilter"
               [task]="task"
               [lists]="lists"
               [labels]="labels"
