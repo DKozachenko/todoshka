@@ -32,6 +32,10 @@ export class ListsComponent implements OnInit {
     this.messageClass = `message__${mesClass}`
   }
 
+  private setClickabilityWindow(str: string): void {
+    window.document.documentElement.style.pointerEvents = str
+  }
+
   public edit(): void {
     this.processMessage('изменен', 'edit')
 
@@ -42,10 +46,12 @@ export class ListsComponent implements OnInit {
 
   public delete(id: number): void {
     this.processMessage('удален', 'delete')
+    this.setClickabilityWindow('none')
 
     setTimeout(() => {
       this.listsService.delete(id)
       this.isMessage = false
+      this.setClickabilityWindow('auto')
       this.getLists()
     }, this.delay)
   }

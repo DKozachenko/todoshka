@@ -83,7 +83,7 @@ export class TasksService {
     const len = this.tasks.length + 1
     this.tasks.push({
       id: len,
-      title: 'Random title',
+      title: 'Название',
       description: null,
       listId: null,
       labelId: null
