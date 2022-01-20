@@ -12,6 +12,7 @@
     <app-task *ngFor="let task of tasks"
               [task]="task"
               [lists]="lists"
+              [labels]="labels"
               (onDone)="done($event)"
               (onEdit)="edit()"
               (onArchive)="archive($event)"

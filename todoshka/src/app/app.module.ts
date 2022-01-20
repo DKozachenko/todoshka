@@ -14,6 +14,7 @@ import {FormsModule} from "@angular/forms";
 import { ArchiveTaskComponent } from './components/archive-task/archive-task.component';
 import { AddButtonComponent } from './components/add-button/add-button.component';
 import { ListComponent } from './components/list/list.component';
+import { LabelComponent } from './components/label/label.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ListComponent } from './components/list/list.component';
     ArchiveTaskComponent,
     AddButtonComponent,
     ListComponent,
+    LabelComponent,
   ],
   imports: [
     BrowserModule,

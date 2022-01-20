@@ -3,6 +3,8 @@ import {TasksService} from "../../services/tasks.service";
 import {TaskInterface} from "../../interfaces/task.interface";
 import {ListsService} from "../../services/lists.service";
 import {ListInterface} from "../../interfaces/list.interface";
+import {LabelsService} from "../../services/labels.service";
+import {LabelInterface} from "../../interfaces/label.interface";
 
 @Component({
   selector: 'app-home',
@@ -14,16 +16,19 @@ export class HomeComponent implements OnInit {
 
   public tasks: TaskInterface[] = []
   public lists: ListInterface[] = []
+  public labels: LabelInterface[] = []
   public isMessage: boolean = false
   public messageText: string = ''
   public messageClass: string = ''
 
   constructor(private tasksService: TasksService,
-              private listsService: ListsService) { }
+              private listsService: ListsService,
+              private labelsService: LabelsService) { }
 
   ngOnInit(): void {
     this.getTasks()
     this.getLists()
+    this.getLabels()
   }
 
   private getTasks(): void {
@@ -32,6 +37,10 @@ export class HomeComponent implements OnInit {
 
   private getLists(): void {
     this.lists = this.listsService.lists
+  }
+
+  private getLabels(): void {
+    this.labels = this.labelsService.labels
   }
 
   private processMessage(mesText: string, mesClass: string): void {

@@ -1,0 +1,39 @@
+<div class="label" #labelRef>
+  <div class="label__preview">
+    <p class="label__preview-title">{{ label.title }}</p>
+
+    <div class="label__preview-buttons">
+      <button class="button button__edit" (click)="edit()">Редактировать</button>
+      <button class="button button__delete" (click)="delete(label.id)">Удалить</button>
+    </div>
+  </div>
+
+
+  <div class="label__parameters" *ngIf="isLabelParameters">
+    <div class="label__parameters-left">
+      <div class="input__block">
+        <p>Название</p>
+        <input type="text"
+               placeholder="Название"
+               #inputTitle
+               (blur)="label.title = inputTitle.value"
+               [value]="this.label.title"
+        >
+      </div>
+
+      <div class="input__block">
+        <p>Цвет</p>
+        <input placeholder="Цвет"
+                  [(ngModel)]="label.color"
+        >
+      </div>
+    </div>
+
+    <div class="label__parameters-right">
+      <div class="input__block">
+        <p>Превью</p>
+
+      </div>
+    </div>
+  </div>
+</div>

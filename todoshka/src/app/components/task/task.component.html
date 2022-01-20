@@ -44,9 +44,10 @@
       <div class="input__block">
         <p>Метка</p>
         <select [(ngModel)]="task.labelId">
-          <option value="РМП">РМП</option>
-          <option value="ЗЗЗ">ЗЗЗ</option>
-          <option value="ДПС">ДПС</option>
+          <option *ngFor="let label of labels"
+                  [value]="label.title"
+          >
+            {{ label.title }}</option>
         </select>
       </div>
     </div>
