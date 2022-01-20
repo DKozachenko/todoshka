@@ -1,8 +1,15 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  Renderer2,
+  ViewChild
+} from '@angular/core';
 import {TaskInterface} from "../../interfaces/task.interface";
-import {TasksService} from "../../services/tasks.service";
 import {ListInterface} from "../../interfaces/list.interface";
-import {LabelsService} from "../../services/labels.service";
 import {LabelInterface} from "../../interfaces/label.interface";
 
 @Component({
@@ -10,7 +17,7 @@ import {LabelInterface} from "../../interfaces/label.interface";
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.sass']
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent implements OnInit{
   public isTaskParameters: boolean = false
 
   @Input() public task: TaskInterface = {
@@ -29,6 +36,7 @@ export class TaskComponent implements OnInit {
   @Output() onArchive: EventEmitter<number> = new EventEmitter<number>()
 
   @ViewChild('taskRef') taskRef = new ElementRef('taskRef')
+  @ViewChild('inputTitle') inputTitle = new ElementRef<any>('inputTitle')
 
   constructor(private renderer: Renderer2) { }
 
@@ -50,6 +58,9 @@ export class TaskComponent implements OnInit {
     this.isTaskParameters = !this.isTaskParameters
 
     if (!this.isTaskParameters) {
+      const title: string = this.inputTitle.nativeElement.value
+      this.task.title = title
+
       this.onEdit.emit()
     }
   }
