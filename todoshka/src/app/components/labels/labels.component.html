@@ -2,4 +2,19 @@
   <h1 class="title content__title">
     Метки
   </h1>
+
+  <div class="content__main">
+    <app-message *ngIf="isMessage"
+                 [messageText]="messageText"
+                 [messageClass]="messageClass"
+    ></app-message>
+
+    <app-label *ngFor="let label of labels"
+              [label]="label"
+              (onEdit)="edit()"
+              (onDelete)="delete($event)"
+    ></app-label>
+
+    <app-add-button (onClick)="add()"></app-add-button>
+  </div>
 </div>

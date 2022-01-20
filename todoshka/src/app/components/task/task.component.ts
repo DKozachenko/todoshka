@@ -2,6 +2,8 @@ import {Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, V
 import {TaskInterface} from "../../interfaces/task.interface";
 import {TasksService} from "../../services/tasks.service";
 import {ListInterface} from "../../interfaces/list.interface";
+import {LabelsService} from "../../services/labels.service";
+import {LabelInterface} from "../../interfaces/label.interface";
 
 @Component({
   selector: 'app-task',
@@ -20,6 +22,7 @@ export class TaskComponent implements OnInit {
   }
 
   @Input() lists: ListInterface[] = []
+  @Input() labels: LabelInterface[] = []
 
   @Output() onDone: EventEmitter<number> = new EventEmitter<number>()
   @Output() onEdit: EventEmitter<void> = new EventEmitter<void>()
