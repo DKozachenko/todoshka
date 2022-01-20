@@ -1,6 +1,7 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild} from '@angular/core';
 import {TaskInterface} from "../../interfaces/task.interface";
 import {TasksService} from "../../services/tasks.service";
+import {ListInterface} from "../../interfaces/list.interface";
 
 @Component({
   selector: 'app-task',
@@ -17,6 +18,8 @@ export class TaskComponent implements OnInit {
     listId: null,
     labelId: null
   }
+
+  @Input() lists: ListInterface[] = []
 
   @Output() onDone: EventEmitter<number> = new EventEmitter<number>()
   @Output() onEdit: EventEmitter<void> = new EventEmitter<void>()

@@ -1,6 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {TasksService} from "../../services/tasks.service";
 import {TaskInterface} from "../../interfaces/task.interface";
+import {ListsService} from "../../services/lists.service";
+import {ListInterface} from "../../interfaces/list.interface";
 
 @Component({
   selector: 'app-home',
@@ -11,18 +13,25 @@ export class HomeComponent implements OnInit {
   private delay: number = 1500
 
   public tasks: TaskInterface[] = []
+  public lists: ListInterface[] = []
   public isMessage: boolean = false
   public messageText: string = ''
   public messageClass: string = ''
 
-  constructor(private tasksService: TasksService) { }
+  constructor(private tasksService: TasksService,
+              private listsService: ListsService) { }
 
   ngOnInit(): void {
     this.getTasks()
+    this.getLists()
   }
 
   private getTasks(): void {
     this.tasks = this.tasksService.tasks
+  }
+
+  private getLists(): void {
+    this.lists = this.listsService.lists
   }
 
   private processMessage(mesText: string, mesClass: string): void {
