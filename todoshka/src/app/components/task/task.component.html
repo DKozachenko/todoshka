@@ -1,16 +1,16 @@
-<div class="task" #taskRef>
-  <div class="task__preview">
-    <p class="task__preview-title">{{ task.title }}</p>
+<div class="block" #taskRef>
+  <div class="block__preview">
+    <p class="block__preview-title">{{ task.title }}</p>
 
-    <div class="task__preview-buttons">
+    <div class="block__preview-buttons">
       <button class="button button__done" (click)="done()">Сделано</button>
       <button class="button button__edit" (click)="edit()">Редактировать</button>
       <button class="button button__archive" (click)="archive()">Архивировать</button>
     </div>
   </div>
 
-  <div class="task__parameters" *ngIf="isTaskParameters">
-    <div class="task__parameters-left">
+  <div class="block__parameters" *ngIf="isTaskParameters">
+    <div class="block__parameters-left">
       <div class="input__block">
         <p>Название</p>
         <input type="text"
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <div class="task__parameters-right">
+    <div class="block__parameters-right">
       <div class="input__block">
         <p>Список</p>
         <select [(ngModel)]="task.listId">

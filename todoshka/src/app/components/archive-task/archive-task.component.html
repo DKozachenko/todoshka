@@ -1,7 +1,10 @@
-<div class="task" #taskRef>
-  <p class="task__title">{{ task.title }}</p>
+<div class="block" #taskRef>
+  <div class="block__preview">
+    <p class="block__preview-title">{{ task.title }}</p>
 
-  <div class="task__buttons">
-    <button class="button button__delete" (click)="delete(this.task.id)">Удалить</button>
+    <div class="block__preview-buttons">
+      <button class="button button__delete" (click)="delete(this.task.id)">Удалить</button>
+    </div>
   </div>
+
 </div>
