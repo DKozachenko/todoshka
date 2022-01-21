@@ -1,16 +1,16 @@
-<div class="label" #labelRef>
-  <div class="label__preview">
-    <p class="label__preview-title">{{ label.title }}</p>
+<div class="block" #labelRef>
+  <div class="block__preview">
+    <p class="block__preview-title">{{ label.title }}</p>
 
-    <div class="label__preview-buttons">
+    <div class="block__preview-buttons">
       <button class="button button__edit" (click)="edit()">Редактировать</button>
       <button class="button button__delete" (click)="delete(label.id)">Удалить</button>
     </div>
   </div>
 
 
-  <div class="label__parameters" *ngIf="isLabelParameters">
-    <div class="label__parameters-left">
+  <div class="block__parameters" *ngIf="isLabelParameters">
+    <div class="block__parameters-left">
       <div class="input__block">
         <p>Название</p>
         <input type="text"
@@ -30,7 +30,7 @@
       </div>
     </div>
 
-    <div class="label__parameters-right">
+    <div class="block__parameters-right">
       <div class="input__block">
         <p>Превью</p>
 
