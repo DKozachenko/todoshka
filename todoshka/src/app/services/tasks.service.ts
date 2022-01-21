@@ -1,52 +1,16 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {TaskInterface} from "../interfaces/task.interface";
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class TasksService {
-  public tasks: TaskInterface[] = [
-    {
-      id: 1,
-      title: 'Купить хлеб',
-      description: null,
-      listId: null,
-      labelId: null
-    },
-    {
-      id: 2,
-      title: 'Купить молоко',
-      description: null,
-      listId: null,
-      labelId: null
-    },
-    {
-      id: 3,
-      title: 'Постирать',
-      description: null,
-      listId: null,
-      labelId: null
-    },
-    {
-      id: 4,
-      title: 'Перебрать документы',
-      description: null,
-      listId: null,
-      labelId: null
-    },
-    {
-      id: 5,
-      title: 'Погулять с собакой',
-      description: null,
-      listId: null,
-      labelId: null
-    }
-  ]
-
+export class TasksService{
+  public tasks: TaskInterface[] = JSON.parse(localStorage.getItem('tasks') ?? '[]')
   public archiveTasks: TaskInterface[] = []
 
-  constructor() { }
+  constructor() {
+  }
 
   public done(id: number): void {
     this.tasks = this.tasks.filter((task: TaskInterface) => {
