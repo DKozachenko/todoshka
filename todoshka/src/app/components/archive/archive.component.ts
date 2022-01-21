@@ -23,6 +23,9 @@ export class ArchiveComponent implements OnInit {
 
   private getTasks(): void {
     this.archiveTasks = this.tasksService.archiveTasks
+
+    const tasksJson: string = JSON.stringify(this.archiveTasks)
+    localStorage.setItem('archive_tasks', tasksJson)
   }
 
   private processMessage(mesText: string, mesClass: string): void {
@@ -35,6 +38,11 @@ export class ArchiveComponent implements OnInit {
     window.document.documentElement.style.pointerEvents = str
   }
 
+  private updateLocalStorage(): void {
+    const archiveTasksJson: string = JSON.stringify(this.archiveTasks)
+    localStorage.setItem('archive_tasks', archiveTasksJson)
+  }
+
   public delete(id: number) {
     this.processMessage('удалено', 'delete')
     this.setClickabilityWindow('none')
@@ -45,6 +53,8 @@ export class ArchiveComponent implements OnInit {
       this.setClickabilityWindow('auto')
       this.getTasks()
     }, this.delay)
+
+    this.updateLocalStorage()
   }
 
 }

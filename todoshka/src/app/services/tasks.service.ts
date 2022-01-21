@@ -7,7 +7,7 @@ import {TaskInterface} from "../interfaces/task.interface";
 })
 export class TasksService{
   public tasks: TaskInterface[] = JSON.parse(localStorage.getItem('tasks') ?? '[]')
-  public archiveTasks: TaskInterface[] = []
+  public archiveTasks: TaskInterface[] = JSON.parse(localStorage.getItem('archive_tasks') ?? '[]')
 
   constructor() {
   }
@@ -41,6 +41,9 @@ export class TasksService{
     })
 
     this.archiveTasks.push(archiveTask ?? tempTask)
+
+    const archiveTasksJson: string = JSON.stringify(this.archiveTasks)
+    localStorage.setItem('archive_tasks', archiveTasksJson)
   }
 
   public add(): void {
