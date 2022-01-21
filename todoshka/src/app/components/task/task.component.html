@@ -1,0 +1,53 @@
+<div class="block" #taskRef>
+  <div class="block__preview">
+    <p class="block__preview-title">{{ task.title }}</p>
+
+    <div class="block__preview-buttons">
+      <button class="button button__done" (click)="done()">Сделано</button>
+      <button class="button button__edit" (click)="edit()">Редактировать</button>
+      <button class="button button__archive" (click)="archive()">Архивировать</button>
+    </div>
+  </div>
+
+  <div class="block__parameters" *ngIf="isTaskParameters">
+    <div class="block__parameters-left">
+      <div class="input__block">
+        <p>Название</p>
+        <input type="text"
+               placeholder="Название"
+               #inputTitle
+               [value]="this.task.title"
+        >
+      </div>
+
+      <div class="input__block">
+        <p>Описание</p>
+        <textarea placeholder="Текст"
+                  [(ngModel)]="task.description"
+        ></textarea>
+      </div>
+    </div>
+
+    <div class="block__parameters-right">
+      <div class="input__block">
+        <p>Список</p>
+        <select [(ngModel)]="task.listId">
+          <option *ngFor="let list of lists"
+                  [value]="list.title"
+          >
+            {{ list.title }}</option>
+        </select>
+      </div>
+
+      <div class="input__block">
+        <p>Метка</p>
+        <select [(ngModel)]="task.labelId">
+          <option *ngFor="let label of labels"
+                  [value]="label.title"
+          >
+            {{ label.title }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

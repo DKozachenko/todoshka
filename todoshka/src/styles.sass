@@ -1,0 +1,192 @@
+*,
+*::after,
+*::before
+  box-sizing: border-box
+
+html
+  font-size: 10px
+
+body
+  margin: 0
+  padding: 0
+  font-family: 'Consolas', sans-serif
+
+h1, h2, h3, h4, h5, h6, p, button
+  padding: 0
+  margin: 0
+
+.title
+  font-size: 3rem
+  line-height: 1
+  color: black
+
+  margin: 0
+  padding: 3rem 1rem
+
+  display: flex
+  justify-content: center
+  align-items: center
+
+.button
+  padding: .8rem 2rem
+
+  font-family: inherit
+  font-size: 1.4rem
+  line-height: 1
+  font-weight: 700
+  color: black
+  border-radius: .8rem
+  border: none
+
+  transition: all .2s linear
+
+  &:not(:last-child)
+    margin-right: 1.5rem
+
+  &:hover
+    color: white
+    opacity: .7
+    cursor: pointer
+
+  &__done
+    background-color: darkgreen
+
+  &__edit
+    background-color: darkorange
+
+  &__archive
+    background-color: darkred
+
+  &__delete
+    background-color: red
+
+  &__filter
+    margin-bottom: 2rem
+
+    &:hover
+      color: black !important
+      opacity: .6 !important
+
+.filters
+  width: 65rem
+
+  margin-bottom: 2rem
+
+  padding: 2rem
+
+  border: 1px solid black
+
+  &__buttons
+    width: 100%
+    display: flex
+    justify-content: flex-start
+
+  &__block
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+    input
+      flex-basis: 45%
+
+      font-size: 1.5rem
+      line-height: 1
+      font-weight: 400
+      color: black
+
+      padding: .5rem
+
+    p
+      flex-basis: 45%
+
+      font-size: 1.5rem
+      line-height: 1
+      font-weight: 400
+      color: black
+      text-align: center
+
+
+.content
+  padding-left: 25%
+
+  min-height: 100vh
+
+  width: 100%
+
+  &__title
+    font-weight: 700
+
+    border-bottom: 1px solid black
+
+  &__main
+    min-height: calc(100vh - #{91px})
+
+    padding: 5rem
+
+    display: flex
+    flex-direction: column
+    align-items: center
+
+.input__block
+  &:not(:last-child)
+    margin-bottom: 1rem
+
+  p
+    font-size: 1.5rem
+    line-height: 1
+    font-weight: 400
+    color: black
+
+    margin-bottom: .8rem
+
+  input,
+  textarea,
+  select
+    font-size: 1.5rem
+    line-height: 1
+    font-weight: 400
+    color: black
+
+    width: 100%
+
+    resize: none
+
+    padding: .5rem
+
+.block
+  width: 65rem
+
+  margin-bottom: 2rem
+
+  &__preview
+    padding: 1.8rem 2rem
+
+    border: 2px solid black
+
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+    &-title
+      font-size: 1.8rem
+      line-height: 1
+      font-weight: 400
+      color: black
+
+      margin-right: 2rem
+
+  &__parameters
+    display: flex
+    justify-content: space-between
+    padding: 1rem 1.5rem
+
+    border-left: 2px solid black
+    border-right: 2px solid black
+    border-bottom: 2px solid black
+
+    &-left
+      flex-basis: 60%
+
+    &-right
+      flex-basis: 35%
+

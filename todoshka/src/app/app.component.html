@@ -1,0 +1,32 @@
+<main>
+  <aside class="sidebar">
+    <h2 class="title sidebar__title">Todoshka</h2>
+
+    <nav class="sidebar__nav">
+      <a class="sidebar__nav-link link-active"
+         routerLink="/"
+         routerLinkActive="link-active"
+         [routerLinkActiveOptions]="{ exact: true }"
+      >Главная</a>
+
+      <a class="sidebar__nav-link"
+         routerLink="/lists"
+         routerLinkActive="link-active"
+      >Списки</a>
+
+      <a class="sidebar__nav-link"
+         routerLink="/labels"
+         routerLinkActive="link-active"
+      >Метки</a>
+
+      <a class="sidebar__nav-link"
+         routerLink="/archive"
+         routerLinkActive="link-active"
+      >Архив</a>
+    </nav>
+  </aside>
+
+  <router-outlet></router-outlet>
+
+</main>
+

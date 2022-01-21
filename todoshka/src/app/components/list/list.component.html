@@ -1,0 +1,24 @@
+<div class="block" #listRef>
+  <div class="block__preview">
+    <p class="block__preview-title">{{ list.title }}</p>
+
+    <div class="block__preview-buttons">
+      <button class="button button__edit" (click)="edit()">Редактировать</button>
+      <button class="button button__delete" (click)="delete(this.list.id)">Удалить</button>
+    </div>
+  </div>
+
+
+  <div class="block__parameters" *ngIf="isListParameters">
+    <div class="block__parameters-left">
+      <div class="input__block">
+        <p>Название</p>
+        <input type="text"
+               placeholder="Название"
+               #inputTitle
+               [value]="this.list.title"
+        >
+      </div>
+    </div>
+  </div>
+</div>
