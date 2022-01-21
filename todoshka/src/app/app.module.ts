@@ -16,6 +16,7 @@ import { AddButtonComponent } from './components/add-button/add-button.component
 import { ListComponent } from './components/list/list.component';
 import { LabelComponent } from './components/label/label.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     ListComponent,
     LabelComponent,
     FilterPipe,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
