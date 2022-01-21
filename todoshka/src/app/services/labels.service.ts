@@ -5,23 +5,7 @@ import {LabelInterface} from "../interfaces/label.interface";
   providedIn: 'root'
 })
 export class LabelsService {
-  public labels: LabelInterface[] = [
-    {
-      id: 1,
-      title: 'КEХ',
-      color: null
-    },
-    {
-      id: 2,
-      title: 'ДОМ',
-      color: null
-    },
-    {
-      id: 3,
-      title: 'УЛИ',
-      color: null
-    },
-  ]
+  public labels: LabelInterface[] = JSON.parse(localStorage.getItem('labels') ?? '[]')
 
   constructor() { }
 

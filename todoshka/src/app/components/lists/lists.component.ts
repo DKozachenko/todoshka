@@ -24,6 +24,9 @@ export class ListsComponent implements OnInit {
 
   private getLists(): void {
     this.lists = this.listsService.lists
+
+    const listsJson: string = JSON.stringify(this.lists)
+    localStorage.setItem('lists', listsJson)
   }
 
   private processMessage(mesText: string, mesClass: string): void {
@@ -36,12 +39,19 @@ export class ListsComponent implements OnInit {
     window.document.documentElement.style.pointerEvents = str
   }
 
+  private updateLocalStorage(): void {
+    const listsJson: string = JSON.stringify(this.lists)
+    localStorage.setItem('lists', listsJson)
+  }
+
   public edit(): void {
     this.processMessage('изменен', 'edit')
 
     setTimeout(() => {
       this.isMessage = false
     }, this.delay)
+
+    this.updateLocalStorage()
   }
 
   public delete(id: number): void {
@@ -54,11 +64,15 @@ export class ListsComponent implements OnInit {
       this.setClickabilityWindow('auto')
       this.getLists()
     }, this.delay)
+
+    this.updateLocalStorage()
   }
 
   public add(): void {
     this.listsService.add()
     this.getLists()
+
+    this.updateLocalStorage()
   }
 
 }

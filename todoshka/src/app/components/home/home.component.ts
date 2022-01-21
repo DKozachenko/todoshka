@@ -37,14 +37,23 @@ export class HomeComponent implements OnInit {
 
   private getTasks(): void {
     this.tasks = this.tasksService.tasks
+
+    const tasksJson: string = JSON.stringify(this.tasks)
+    localStorage.setItem('tasks', tasksJson)
   }
 
   private getLists(): void {
     this.lists = this.listsService.lists
+
+    const listsJson: string = JSON.stringify(this.lists)
+    localStorage.setItem('lists', listsJson)
   }
 
   private getLabels(): void {
     this.labels = this.labelsService.labels
+
+    const labelsJson: string = JSON.stringify(this.labels)
+    localStorage.setItem('labels', labelsJson)
   }
 
   private processMessage(mesText: string, mesClass: string): void {
@@ -57,6 +66,11 @@ export class HomeComponent implements OnInit {
     window.document.documentElement.style.pointerEvents = str
   }
 
+  private updateLocalStorage(): void {
+    const tasksJson: string = JSON.stringify(this.tasks)
+    localStorage.setItem('tasks', tasksJson)
+  }
+
   public done(id: number): void {
     this.processMessage('сделано', 'done')
     this.setClickabilityWindow('none')
@@ -67,6 +81,8 @@ export class HomeComponent implements OnInit {
       this.setClickabilityWindow('auto')
       this.getTasks()
     }, this.delay)
+
+    this.updateLocalStorage()
   }
 
   public edit(): void {
@@ -75,6 +91,8 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.isMessage = false
     }, this.delay)
+
+    this.updateLocalStorage()
   }
 
   public archive(id: number): void {
@@ -87,11 +105,15 @@ export class HomeComponent implements OnInit {
       this.setClickabilityWindow('auto')
       this.getTasks()
     }, this.delay)
+
+    this.updateLocalStorage()
   }
 
   public add(): void {
     this.tasksService.add()
     this.getTasks()
+
+    this.updateLocalStorage()
   }
 
   public parseKeyFilter(): string {
