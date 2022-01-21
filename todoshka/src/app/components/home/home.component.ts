@@ -44,10 +44,16 @@ export class HomeComponent implements OnInit {
 
   private getLists(): void {
     this.lists = this.listsService.lists
+
+    const listsJson: string = JSON.stringify(this.lists)
+    localStorage.setItem('lists', listsJson)
   }
 
   private getLabels(): void {
     this.labels = this.labelsService.labels
+
+    const labelsJson: string = JSON.stringify(this.labels)
+    localStorage.setItem('labels', labelsJson)
   }
 
   private processMessage(mesText: string, mesClass: string): void {

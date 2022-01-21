@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {TaskInterface} from "../../interfaces/task.interface";
-import {ListInterface} from "../../interfaces/list.interface";
 import {LabelInterface} from "../../interfaces/label.interface";
 import {LabelsService} from "../../services/labels.service";
 
@@ -25,6 +23,9 @@ export class LabelsComponent implements OnInit {
 
   private getLabels(): void {
     this.labels = this.labelsService.labels
+
+    const labelsJson: string = JSON.stringify(this.labels)
+    localStorage.setItem('labels', labelsJson)
   }
 
   private processMessage(mesText: string, mesClass: string): void {
@@ -37,12 +38,19 @@ export class LabelsComponent implements OnInit {
     window.document.documentElement.style.pointerEvents = str
   }
 
+  private updateLocalStorage(): void {
+    const labelsJson: string = JSON.stringify(this.labels)
+    localStorage.setItem('labels', labelsJson)
+  }
+
   public edit(): void {
     this.processMessage('изменена', 'edit')
 
     setTimeout(() => {
       this.isMessage = false
     }, this.delay)
+
+    this.updateLocalStorage()
   }
 
   public delete(id: number): void {
@@ -55,11 +63,15 @@ export class LabelsComponent implements OnInit {
       this.setClickabilityWindow('auto')
       this.getLabels()
     }, this.delay)
+
+    this.updateLocalStorage()
   }
 
   public add(): void {
     this.labelsService.add()
     this.getLabels()
+
+    this.updateLocalStorage()
   }
 
 }

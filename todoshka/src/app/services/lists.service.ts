@@ -5,24 +5,7 @@ import {ListInterface} from "../interfaces/list.interface";
   providedIn: 'root'
 })
 export class ListsService {
-  public lists: ListInterface[] = [
-    {
-      id: 1,
-      title: 'Кухня'
-    },
-    {
-      id: 2,
-      title: 'Дом'
-    },
-    {
-      id: 3,
-      title: 'Улица'
-    },
-    {
-      id: 4,
-      title: 'Работа'
-    }
-  ]
+  public lists: ListInterface[] = JSON.parse(localStorage.getItem('lists') ?? '[]')
 
   constructor() { }
 
